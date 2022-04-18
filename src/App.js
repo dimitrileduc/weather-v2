@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Moment from "moment";
-import {VictoryTheme,  VictoryBar ,VictoryChart, VictoryLine  } from "victory";
+import {VictoryTheme,VictoryChart, VictoryLine  } from "victory";
 
 
 
@@ -43,12 +43,7 @@ function App() {
   const j5Date = Moment().add(5, "days").format("ddd DD MMMM ").toString();
   const j6Date = Moment().add(6, "days").format("ddd DD MMMM ").toString();
 
-  const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-  ];
+
 
   useEffect(() => {
     ifClicked();
@@ -179,13 +174,7 @@ function App() {
           <p className="temp"> Temperature: {j6T}°</p>
           <p className="temp">Weather: {j6Weather}</p>
         </div>
-        <VictoryBar
-          data={data}
-          // data accessor for x values
-          x="quarter"
-          // data accessor for y values
-          y="earnings"
-        />
+        
         <VictoryChart theme={VictoryTheme.material}>
           <VictoryLine
             style={{
