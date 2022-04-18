@@ -9,8 +9,15 @@ function App() {
   
 
   const [photos, setPhotos] = useState([]);
+
   const [currentT, setCurrentT] = useState();
   const [currentWeather, setCurrentWeather] = useState();
+
+  const [nextDayT, setNextDayT] = useState();
+  const [nextDayWeather, setNextDayWeather] = useState();
+
+
+
   const [day, setDay] = useState();
   const [weekT, setWeekT] = useState();
 
@@ -49,7 +56,7 @@ function App() {
         
 
         fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${object[0].lat}&lon=${object[0].lon}&appid=c728df12326ce2d393585d06d1f41d26`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${object[0].lat}&lon=${object[0].lon}&appid=c728df12326ce2d393585d06d1f41d26&units=metric`
         )
           .then((res) => {
             if (res.ok) {
@@ -66,11 +73,14 @@ function App() {
             }
           })
           .then((object) => {
-            //setWeather(object);
+            setCurrentWeather(object.current.weather[0].main);
             console.log(object);
-            //setCurrentT(object.list[0].main.temp);
+            setCurrentT(object.current.temp);
             //setCurrentWeather(object.list[0].weather[0].main);
             //console.log(tommorowDate)
+
+            setNextDayT(object.daily[1].temp.day)
+            setNextDayWeather(object.daily[1].weather[0].main)
           })
           .catch((error) => console.log(error));
       })
@@ -110,7 +120,13 @@ function App() {
         <div className="app__data">
           <h3>{formatDate}</h3>
 
+          <p className="temp">Current Temperature: {currentT}</p>
+          <p className="temp">Current Weather: {currentWeather}</p>
+          
+
           <h3>{tommorowDate}</h3>
+          <p className="temp"> Temperature: {nextDayT}</p>
+          <p className="temp">Weather: {nextDayWeather}</p>
           <h3>{j2Date}</h3>
           <h3>{j3Date}</h3>
           <h3>{j4Date}</h3>
@@ -156,4 +172,6 @@ export default App;
             //console.log(tommorowDate)
           })
           .catch((error) => console.log(error));
+
+          nextDayWeather
           */
