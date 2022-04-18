@@ -63,7 +63,7 @@ function App() {
           </button>
         </div>
         <div className="app__data">
-          <p className="temp">Current Temparature: {weather?.main?.temp}</p>
+          <p className="temp">Current Temperature: {weather?.main?.temp}</p>
         </div>
         <img className="app__image" src={photos} alt="" />
       </div>
