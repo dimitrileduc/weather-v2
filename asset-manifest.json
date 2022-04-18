@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dimitrileduc/weather-v2/static/css/main.93ac5b0f.css",
+    "main.js": "/dimitrileduc/weather-v2/static/js/main.b896f1c7.js",
+    "static/js/787.c1112931.chunk.js": "/dimitrileduc/weather-v2/static/js/787.c1112931.chunk.js",
+    "index.html": "/dimitrileduc/weather-v2/index.html",
+    "main.93ac5b0f.css.map": "/dimitrileduc/weather-v2/static/css/main.93ac5b0f.css.map",
+    "main.b896f1c7.js.map": "/dimitrileduc/weather-v2/static/js/main.b896f1c7.js.map",
+    "787.c1112931.chunk.js.map": "/dimitrileduc/weather-v2/static/js/787.c1112931.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93ac5b0f.css",
+    "static/js/main.b896f1c7.js"
+  ]
+}
