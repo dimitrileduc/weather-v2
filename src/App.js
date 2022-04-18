@@ -186,8 +186,11 @@ function App() {
               { x: 2, y: 3 },
               { x: 3, y: 5 },
               { x: 4, y: 4 },
-              { x: 5, y: 7 },
+              { x: 5, y: 3 },
+              { x: 6, y: 2 },
+              { x: 7, y: 7 },
             ]}
+            categories={{ x: ["today", "j+1", "j+2", "j+3", "j+4", "j+5", "j+6"] }}
           />
         </VictoryChart>
       </div>
