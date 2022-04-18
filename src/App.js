@@ -16,6 +16,21 @@ function App() {
   const [nextDayT, setNextDayT] = useState();
   const [nextDayWeather, setNextDayWeather] = useState();
 
+  const [J2T, setJ2T] = useState();
+  const [J2Weather, setJ2Weather] = useState();
+
+  const [j3T, setJ3T] = useState();
+  const [j3Weather, setJ3Weather] = useState();
+
+  const [j4T, setJ4T] = useState();
+  const [j4Weather, setJ4Weather] = useState();
+
+  const [j5T, setJ5T] = useState();
+  const [j5Weather, setJ5Weather] = useState();
+
+  const [j6T, setJ6T] = useState();
+  const [j6Weather, setJ6Weather] = useState();
+
 
 
   const [day, setDay] = useState();
@@ -81,6 +96,21 @@ function App() {
 
             setNextDayT(object.daily[1].temp.day)
             setNextDayWeather(object.daily[1].weather[0].main)
+
+            setJ2T(object.daily[2].temp.day)
+            setJ2Weather(object.daily[2].weather[0].main)
+
+            setJ3T(object.daily[3].temp.day)
+            setJ3Weather(object.daily[3].weather[0].main)
+
+            setJ4T(object.daily[4].temp.day)
+            setJ4Weather(object.daily[4].weather[0].main)
+
+            setJ5T(object.daily[5].temp.day)
+            setJ5Weather(object.daily[5].weather[0].main)
+
+            setJ6T(object.daily[6].temp.day)
+            setJ6Weather(object.daily[6].weather[0].main)
           })
           .catch((error) => console.log(error));
       })
@@ -120,18 +150,34 @@ function App() {
         <div className="app__data">
           <h3>{formatDate}</h3>
 
-          <p className="temp">Current Temperature: {currentT}</p>
+          <p className="temp">Current Temperature: {currentT}°</p>
           <p className="temp">Current Weather: {currentWeather}</p>
           
 
           <h3>{tommorowDate}</h3>
-          <p className="temp"> Temperature: {nextDayT}</p>
+          <p className="temp"> Temperature: {nextDayT}°</p>
           <p className="temp">Weather: {nextDayWeather}</p>
+
           <h3>{j2Date}</h3>
+          <p className="temp"> Temperature: {J2T}°</p>
+          <p className="temp">Weather: {J2Weather}</p>
+
           <h3>{j3Date}</h3>
+          <p className="temp"> Temperature: {j3T}°</p>
+          <p className="temp">Weather: {j3Weather}</p>
+
           <h3>{j4Date}</h3>
+          <p className="temp"> Temperature: {j4T}°</p>
+          <p className="temp">Weather: {j4Weather}</p>
+
           <h3>{j5Date}</h3>
+          <p className="temp"> Temperature: {j5T}°</p>
+          <p className="temp">Weather: {j5Weather}</p>
+
           <h3>{j6Date}</h3>
+          <p className="temp"> Temperature: {j6T}°</p>
+          <p className="temp">Weather: {j6Weather}</p>
+
         </div>
         <img className="app__image" src={photos} alt="" />
       </div>
