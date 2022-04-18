@@ -6,13 +6,14 @@ function App() {
   const [weather, setWeather] = useState({});
   const [locations, setLocations] = useState("london");
   const [photos, setPhotos] = useState([]);
+  const [currentT, setCurrentT] = useState();
   useEffect(() => {
     ifClicked();
   }, []);
 
   function ifClicked() {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=c728df12326ce2d393585d06d1f41d26&units=metric`
+      `http://api.openweathermap.org/data/2.5/forecast?q=${locations}&APPID=c728df12326ce2d393585d06d1f41d26&units=metric`
     )
       .then((res) => {
         if (res.ok) {
@@ -28,7 +29,8 @@ function App() {
       })
       .then((object) => {
         setWeather(object);
-        console.log(weather);
+        console.log(object.list[0].main.temp);
+        setCurrentT(object.list[0].main.temp);
       })
       .catch((error) => console.log(error));
     fetch(
@@ -63,7 +65,7 @@ function App() {
           </button>
         </div>
         <div className="app__data">
-          <p className="temp">Current Temperature: {weather?.main?.temp}</p>
+          <p className="temp">Current Temperature: {currentT}</p>
         </div>
         <img className="app__image" src={photos} alt="" />
       </div>
