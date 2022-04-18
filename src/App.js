@@ -184,7 +184,7 @@ function App() {
         
         <VictoryChart theme={VictoryTheme.material}>
           <VictoryLine
-          
+          //animate={{ duration: 2000 }}
           interpolation="natural"
             style={{
               data: { stroke: "#c43a31" },
@@ -210,37 +210,3 @@ function App() {
 
 export default App;
 
-/*
- <p className="temp">Current Temperature: {currentT}</p>
-          <p className="temp">Current Weather: {currentWeather}</p>
-          */
-
-/*
-          fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=c728df12326ce2d393585d06d1f41d26`
-        )
-          .then((res) => {
-            if (res.ok) {
-              console.log(res.status);
-              return res.json();
-            } else {
-              if (res.status === 404) {
-                return alert(
-                  "Oops, there seems to be an error!(wrong location)"
-                );
-              }
-              alert("Oops, there seems to be an error!");
-              throw new Error("You have an error");
-            }
-          })
-          .then((object) => {
-            //setWeather(object);
-            console.log(object);
-            //setCurrentT(object.list[0].main.temp);
-            //setCurrentWeather(object.list[0].weather[0].main);
-            //console.log(tommorowDate)
-          })
-          .catch((error) => console.log(error));
-
-          nextDayWeather
-          */
