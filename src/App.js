@@ -177,18 +177,20 @@ function App() {
         
         <VictoryChart theme={VictoryTheme.material}>
           <VictoryLine
+          interpolation="natural"
             style={{
               data: { stroke: "#c43a31" },
               parent: { border: "1px solid #ccc" },
             }}
             data={[
-              { x: 1, y: 2 },
-              { x: 2, y: 3 },
-              { x: 3, y: 5 },
-              { x: 4, y: 4 },
-              { x: 5, y: 3 },
-              { x: 6, y: 2 },
-              { x: 7, y: 7 },
+              
+              { x: 1, y: currentT },
+              { x: 2, y: nextDayT },
+              { x: 3, y: J2T },
+              { x: 4, y: j3T },
+              { x: 5, y: j4T },
+              { x: 6, y: j5T },
+              { x: 7, y: j6T },
             ]}
             categories={{ x: ["today", "j+1", "j+2", "j+3", "j+4", "j+5", "j+6"] }}
           />
