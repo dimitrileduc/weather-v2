@@ -43,6 +43,13 @@ function App() {
   const j5Date = Moment().add(5, "days").format("ddd DD MMMM ").toString();
   const j6Date = Moment().add(6, "days").format("ddd DD MMMM ").toString();
 
+  const j1Graph = Moment().add(1, "days").format("ddd  ").toString();
+  const j2Graph = Moment().add(2, "days").format("ddd  ").toString();
+  const j3Graph = Moment().add(3, "days").format("ddd  ").toString();
+  const j4Graph = Moment().add(4, "days").format("ddd  ").toString();
+  const j5Graph = Moment().add(5, "days").format("ddd  ").toString();
+  const j6Graph = Moment().add(6, "days").format("ddd  ").toString();
+
 
 
   useEffect(() => {
@@ -51,7 +58,7 @@ function App() {
 
   function ifClicked() {
     fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${locations}&limit=1&appid=c728df12326ce2d393585d06d1f41d26&units=metric`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${locations}&limit=1&appid=c728df12326ce2d393585d06d1f41d26&units=metric`
     )
       .then((res) => {
         if (res.ok) {
@@ -177,6 +184,7 @@ function App() {
         
         <VictoryChart theme={VictoryTheme.material}>
           <VictoryLine
+          
           interpolation="natural"
             style={{
               data: { stroke: "#c43a31" },
@@ -192,7 +200,7 @@ function App() {
               { x: 6, y: j5T },
               { x: 7, y: j6T },
             ]}
-            categories={{ x: ["today", "j+1", "j+2", "j+3", "j+4", "j+5", "j+6"] }}
+            categories={{ x: ["today",j1Graph,j2Graph, j3Graph, j4Graph, j5Graph, j6Graph] }}
           />
         </VictoryChart>
       </div>
