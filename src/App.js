@@ -7,6 +7,7 @@ function App() {
   const [locations, setLocations] = useState("london");
   const [photos, setPhotos] = useState([]);
   const [currentT, setCurrentT] = useState();
+  const [currentWeather, setCurrentWeather] = useState();
   useEffect(() => {
     ifClicked();
   }, []);
@@ -29,8 +30,9 @@ function App() {
       })
       .then((object) => {
         setWeather(object);
-        console.log(object.list[0].main.temp);
+        console.log(object);
         setCurrentT(object.list[0].main.temp);
+        setCurrentWeather(object.list[0].weather[0].main);
       })
       .catch((error) => console.log(error));
     fetch(
@@ -66,6 +68,7 @@ function App() {
         </div>
         <div className="app__data">
           <p className="temp">Current Temperature: {currentT}</p>
+          <p className="temp">Current Weather: {currentWeather}</p>
         </div>
         <img className="app__image" src={photos} alt="" />
       </div>
