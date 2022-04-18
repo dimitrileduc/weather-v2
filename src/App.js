@@ -6,8 +6,7 @@ import "./App.css";
 function App() {
   const [weather, setWeather] = useState({});
   const [locations, setLocations] = useState("london");
-  const [lat, setLat] = useState();
-  const [lon, setLon] = useState();
+  
 
   const [photos, setPhotos] = useState([]);
   const [currentT, setCurrentT] = useState();
@@ -47,12 +46,10 @@ function App() {
         }
       })
       .then((object) => {
-        //console.log(object[0].lat)
-        setLat(object[0].lat);
-        setLon(object[0].lon);
+        
 
         fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?q=${locations}&APPID=c728df12326ce2d393585d06d1f41d26&units=metric`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${object[0].lat}&lon=${object[0].lon}&appid=c728df12326ce2d393585d06d1f41d26`
         )
           .then((res) => {
             if (res.ok) {
@@ -69,7 +66,7 @@ function App() {
             }
           })
           .then((object) => {
-            setWeather(object);
+            //setWeather(object);
             console.log(object);
             //setCurrentT(object.list[0].main.temp);
             //setCurrentWeather(object.list[0].weather[0].main);
@@ -131,4 +128,32 @@ export default App;
 /*
  <p className="temp">Current Temperature: {currentT}</p>
           <p className="temp">Current Weather: {currentWeather}</p>
+          */
+
+/*
+          fetch(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=c728df12326ce2d393585d06d1f41d26`
+        )
+          .then((res) => {
+            if (res.ok) {
+              console.log(res.status);
+              return res.json();
+            } else {
+              if (res.status === 404) {
+                return alert(
+                  "Oops, there seems to be an error!(wrong location)"
+                );
+              }
+              alert("Oops, there seems to be an error!");
+              throw new Error("You have an error");
+            }
+          })
+          .then((object) => {
+            //setWeather(object);
+            console.log(object);
+            //setCurrentT(object.list[0].main.temp);
+            //setCurrentWeather(object.list[0].weather[0].main);
+            //console.log(tommorowDate)
+          })
+          .catch((error) => console.log(error));
           */
