@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Moment from "moment";
+import {VictoryTheme,  VictoryBar ,VictoryChart, VictoryLine  } from "victory";
+
+
 
 import "./App.css";
 
 function App() {
-  const [weather, setWeather] = useState({});
   const [locations, setLocations] = useState("london");
-  
 
   const [photos, setPhotos] = useState([]);
 
@@ -31,11 +32,6 @@ function App() {
   const [j6T, setJ6T] = useState();
   const [j6Weather, setJ6Weather] = useState();
 
-
-
-  const [day, setDay] = useState();
-  const [weekT, setWeekT] = useState();
-
   const formatDate = Moment().format("[Today ] ");
   const tommorowDate = Moment()
     .add(1, "days")
@@ -46,6 +42,13 @@ function App() {
   const j4Date = Moment().add(4, "days").format("ddd DD MMMM ").toString();
   const j5Date = Moment().add(5, "days").format("ddd DD MMMM ").toString();
   const j6Date = Moment().add(6, "days").format("ddd DD MMMM ").toString();
+
+  const data = [
+    { quarter: 1, earnings: 13000 },
+    { quarter: 2, earnings: 16500 },
+    { quarter: 3, earnings: 14250 },
+    { quarter: 4, earnings: 19000 },
+  ];
 
   useEffect(() => {
     ifClicked();
@@ -68,8 +71,6 @@ function App() {
         }
       })
       .then((object) => {
-        
-
         fetch(
           `https://api.openweathermap.org/data/2.5/onecall?lat=${object[0].lat}&lon=${object[0].lon}&appid=c728df12326ce2d393585d06d1f41d26&units=metric`
         )
@@ -94,23 +95,23 @@ function App() {
             //setCurrentWeather(object.list[0].weather[0].main);
             //console.log(tommorowDate)
 
-            setNextDayT(object.daily[1].temp.day)
-            setNextDayWeather(object.daily[1].weather[0].main)
+            setNextDayT(object.daily[1].temp.day);
+            setNextDayWeather(object.daily[1].weather[0].main);
 
-            setJ2T(object.daily[2].temp.day)
-            setJ2Weather(object.daily[2].weather[0].main)
+            setJ2T(object.daily[2].temp.day);
+            setJ2Weather(object.daily[2].weather[0].main);
 
-            setJ3T(object.daily[3].temp.day)
-            setJ3Weather(object.daily[3].weather[0].main)
+            setJ3T(object.daily[3].temp.day);
+            setJ3Weather(object.daily[3].weather[0].main);
 
-            setJ4T(object.daily[4].temp.day)
-            setJ4Weather(object.daily[4].weather[0].main)
+            setJ4T(object.daily[4].temp.day);
+            setJ4Weather(object.daily[4].weather[0].main);
 
-            setJ5T(object.daily[5].temp.day)
-            setJ5Weather(object.daily[5].weather[0].main)
+            setJ5T(object.daily[5].temp.day);
+            setJ5Weather(object.daily[5].weather[0].main);
 
-            setJ6T(object.daily[6].temp.day)
-            setJ6Weather(object.daily[6].weather[0].main)
+            setJ6T(object.daily[6].temp.day);
+            setJ6Weather(object.daily[6].weather[0].main);
           })
           .catch((error) => console.log(error));
       })
@@ -147,12 +148,12 @@ function App() {
             Search Location
           </button>
         </div>
+        <img className="app__image" src={photos} alt="" />
         <div className="app__data">
           <h3>{formatDate}</h3>
 
           <p className="temp">Current Temperature: {currentT}°</p>
           <p className="temp">Current Weather: {currentWeather}</p>
-          
 
           <h3>{tommorowDate}</h3>
           <p className="temp"> Temperature: {nextDayT}°</p>
@@ -177,9 +178,29 @@ function App() {
           <h3>{j6Date}</h3>
           <p className="temp"> Temperature: {j6T}°</p>
           <p className="temp">Weather: {j6Weather}</p>
-
         </div>
-        <img className="app__image" src={photos} alt="" />
+        <VictoryBar
+          data={data}
+          // data accessor for x values
+          x="quarter"
+          // data accessor for y values
+          y="earnings"
+        />
+        <VictoryChart theme={VictoryTheme.material}>
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+            }}
+            data={[
+              { x: 1, y: 2 },
+              { x: 2, y: 3 },
+              { x: 3, y: 5 },
+              { x: 4, y: 4 },
+              { x: 5, y: 7 },
+            ]}
+          />
+        </VictoryChart>
       </div>
     </div>
   );
